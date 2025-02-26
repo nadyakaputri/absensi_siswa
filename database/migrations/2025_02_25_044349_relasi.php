@@ -26,7 +26,7 @@ return new class extends Migration
             $table->foreign('lokal_id')->references('id')->on('lokals')->onDelete('cascade');
         });
 
-        Schema::table('gurus', function (Blueprint $table) {
+        Schema::table('gurus', function (Blueprint $table) { 
             $table->foreign('lokal_id')->references('id')->on('lokals')->onDelete('cascade');
         });
     }
