@@ -24,10 +24,11 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         DB::table('users')->insert([
-            'name' => Str::random(10),
+            'name' => 'Admin',
+            'username' => 'Admin',
             'email' => Str::random(10).'@example.com',
-            'username' => 'nadya',
-            'password' => Hash::make('4444'),
+            'password' => Hash::make('1234'),
+            'level' => 'admin'
         ]);
     }
 }

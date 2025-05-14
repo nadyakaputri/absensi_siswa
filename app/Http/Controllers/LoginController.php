@@ -14,27 +14,27 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function authenticate(Request $request):RedirectResponse
+    public function authenticate(Request $request): RedirectResponse
     {
-        
         $credentials = $request->validate([
             'username' => 'required',
             'password' => 'required',
         ]);
-        
+
         if (Auth::attempt($credentials)) {
-            
             $request->session()->regenerate();
 
-            return redirect()->route('dashboard');
+            $user = Auth::user();
+            if ($user->level === 'guru') {
+                return redirect()->route('dashboard-guru');
+            } elseif ($user->level === 'admin') {
+                return redirect()->route('dashboard');
+            } elseif ($user->level === 'siswa') {
+                return redirect()->route('dashboard-siswa');
+            }
         }
+
         return back()->with('loginError', 'Login failed, please try again');
-
-        return back()->withErrors([
-            'username' => 'The provided credentials do not match our records.',
-        ]);
-
-     
     }
 
     public function logout (Request $request):RedirectResponse 

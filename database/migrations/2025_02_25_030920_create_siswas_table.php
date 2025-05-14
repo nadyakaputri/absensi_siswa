@@ -21,8 +21,8 @@ return new class extends Migration
             $table->enum('JK', ['L','P']);  
             $table->string('username' , 30);
             $table->string('password' , 100);
-            $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('lokal_id')->unsigned();  
+            $table->foreignId('user_id')->unsigned();
+            $table->foreignId('lokal_id')->unsigned();  
            
         });
     }

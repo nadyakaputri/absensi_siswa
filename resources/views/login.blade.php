@@ -8,17 +8,8 @@
 </head>
 
 <body>
-	@if(Auth::user())
-	<script type="text/javascript">
-		window.location = "/kaiadmin";
-	</script>
-	@endif
-	@if(session()->has('loginError'))
-	<div class="alert alert-danger alert-dismissible">
-		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-		{{ session()->get('loginError') }}
-	</div>
-	@endif
+	
+	
 	<!--Login form starts-->
 	<section class="container-fluid">
 		<!--row justify-content-center is used for centering the login form-->
@@ -39,7 +30,7 @@
 						<label for="InputPassword1">Password</label>
 						<input type="password" class="form-control" id="InputPassword1" name="password" placeholder="Password">
 					</div>
-					<button type="Sign in" class="btn btn-primary btn-block">Sign in</button>
+					<button type="submit" class="btn btn-primary btn-block">Sign in</button>
 					
 
 				</form>

@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('username' , 30);
             $table->string('password' , 100);
             $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('lokal_id')->unsigned();
             $table->timestamps();
   
           
