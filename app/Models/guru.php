@@ -36,4 +36,10 @@ class Guru extends Model
     {
         return $this->hasMany(absen::class, 'guru_id');
     }
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class, 'guru_id');
+    }
 }
+

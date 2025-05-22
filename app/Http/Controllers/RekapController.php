@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\absen;
+use Carbon\Carbon;
+use App\Models\local;
 use App\Models\Siswa;
+use App\Models\Mengabsen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class RekapController extends Controller
+class rekapcontroller extends Controller
 {
     public function index()
     {
-        // Ambil data siswa berdasarkan pengguna yang login
-        $siswa = Siswa::where('user_id', Auth::id())->firstOrFail();
-        $rekapAbsensi = absen::where('siswa_id', $siswa->id)->with('guru')->get();
+        $siswa = siswa::where('username', Auth::user()->username)->firstOrFail();
+        $rekapAbsensi = Mengabsen::where('id_siswa', $siswa->id)->with('guru')->get();
 
-        // Kirim data ke view
-        return view('Siswa.index', [
-            'menu' => 'rekap',
+        return view('siswa.rekap.index', [
+            'menu' => 'dashboard',
             'title' => 'Rekap Absensi ' . $siswa->nama,
             'siswa' => $siswa,
             'rekapAbsensi' => $rekapAbsensi

@@ -12,6 +12,14 @@
 	
 	<!--Login form starts-->
 	<section class="container-fluid">
+		@if(session('loginError'))
+    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+        {{ session('loginError') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
 		<!--row justify-content-center is used for centering the login form-->
 		<section class="row justify-content-center">
 			<!--Making the form responsive-->
